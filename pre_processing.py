@@ -20,11 +20,6 @@ max_slow_charging = df['slow_charging_point'].max()
 avg_slow_charging = df['slow_charging_point'].mean()
 df['slow_charging_point'] = df['slow_charging_point'].apply(lambda x: (x-avg_slow_charging)/(max_slow_charging-min_slow_charging))
 
-min_sales_BEV = df['sales_BEV'].min()
-max_sales_BEV = df['sales_BEV'].max()
-avg_sales_BEV = df['sales_BEV'].mean()
-df['sales_BEV'] = df['sales_BEV'].apply(lambda x: (x-avg_sales_BEV)/(max_sales_BEV-min_sales_BEV))
-
 min_sales_PHEV = df['sales_PHEV'].min()
 max_sales_PHEV = df['sales_PHEV'].max()
 avg_sales_PHEV = df['sales_PHEV'].mean()
