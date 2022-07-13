@@ -5,13 +5,10 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("EV.csv")
 
 df = df[df['region'].isin(['Italy','France','Germany','Norway','Sweden'])]
-#print(df_it)
 # Select cars data
 df_car = df[df['mode'].isin(['Cars','EV'])]     
-#print(df_it_car)
 # Select historical data
 df_car = df_car[df_car['category'].isin(['Historical'])]
-#print(df_it_car)
 # Setting parameter as an index
 df_car.set_index('parameter', inplace=True)
 # Drop colom region, mode, category
