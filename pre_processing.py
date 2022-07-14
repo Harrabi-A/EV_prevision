@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 
+from sklearn.model_selection import train_test_split
+
 df = pd.read_csv('EU_EV.csv')
 
 print(df)
@@ -19,6 +21,7 @@ min_slow_charging = df['slow_charging_point'].min()
 max_slow_charging = df['slow_charging_point'].max()
 avg_slow_charging = df['slow_charging_point'].mean()
 df['slow_charging_point'] = df['slow_charging_point'].apply(lambda x: (x-avg_slow_charging)/(max_slow_charging-min_slow_charging))
+
 
 min_sales_PHEV = df['sales_PHEV'].min()
 max_sales_PHEV = df['sales_PHEV'].max()
@@ -44,5 +47,15 @@ print(df)
 dataset = df[['year','region','fast_charging_point','slow_charging_point','sales_BEV','sales_PHEV','EV_sales_share','stock_BEV','stock_PHEV','EV_stock_share']]
 print(dataset)
 
+X = df[['year','fast_charging_point','slow_charging_point','stock_BEV','stock_PHEV','EV_stock_share']]
+y = df['sales_BEV']
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+train_set = X_train.assign(sales_BEV=y_train)
+test_set = X_test.assign(sales_BEV=y_test)
+
 # export dataset
-#dataset.to_csv('pre_proc_EV.csv')
+#train_set.to_csv('train_set.csv')
+#test_set.to_csv('test_set.csv')
