@@ -9,19 +9,12 @@ from sklearn.metrics import mean_squared_error
 
 from math import sqrt
 
-df = pd.read_csv('pre_proc_EV.csv')
+df = pd.read_csv('train_set.csv')
 
-Country = ['France','Belgium','Germany','Netherland','Poland','Portugal','Spain','Switzerland','United Kingdom','Denmark','Norway','Sweden','Finland']
-Country_value = np.arange(13)
-
-df = df[df['region'].isin(Country)]
-df['region'].replace(Country, Country_value, inplace=True)
 
 X = np.array(df[['year','fast_charging_point','slow_charging_point','stock_BEV','stock_PHEV','EV_stock_share']])
 y = np.array(df['sales_BEV'])
 
-
-X, X_test, y, y_test = train_test_split(X, y, test_size=0.2)
 
 # Linear Regression
 lin_regr = linear_model.LinearRegression()
@@ -66,5 +59,4 @@ mean_mse_ada_boost = np.mean( ada_boost_perform)
 
 print("mean_rmse_lin_regr: ", mean_mse_lin_regr)
 print("mean_rmse_grad_boost: ", mean_mse_grad_boost)
-print("mean_rmse_ada_boost:",ean_mse_ada_boost)
-
+print("mean_rmse_ada_boost:", mean_mse_ada_boost)
