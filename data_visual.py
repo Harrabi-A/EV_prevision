@@ -50,6 +50,7 @@ dataset_sw.columns = ['fast_charging_point','slow_charging_point','sales_BEV','s
 #compute mean
 dataset = dataset.fillna(value=0)
 dataset_mean = dataset.groupby(['year']).mean()
+print(dataset)
 
 
 # Data Visualization
@@ -113,3 +114,6 @@ plt.legend(loc="upper left")
 plt.ylabel("EV_sales_share")
 plt.xlabel("year")
 plt.show()
+
+#Save data for next step
+dataset.to_csv("clean_EV.csv")
