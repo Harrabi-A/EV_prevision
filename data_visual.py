@@ -115,5 +115,3 @@ plt.ylabel("EV_sales_share")
 plt.xlabel("year")
 plt.show()
 
-#Save data for next step
-dataset.to_csv("clean_EV.csv")
