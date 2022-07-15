@@ -45,5 +45,3 @@ print(dataset)
 
     # export Dataframe to csv file
 dataset.to_csv('EU_EV.csv')
-
-
